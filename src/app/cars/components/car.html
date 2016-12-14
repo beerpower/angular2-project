@@ -1,0 +1,16 @@
+
+<label>Model:</label>
+<select (change)="selectModel($event.target.value)">
+  <option value="">Choose</option>
+  <option *ngFor="let unit of car.models" value="{{unit.id}}">
+    {{unit.name}}
+  </option>
+</select>
+
+
+<div class="preview">
+  <dl>
+    <dt>{{car.name}}</dt>
+    <dd *ngIf="selectedCarModel"></dd>
+  </dl>
+</div>

@@ -1,0 +1,35 @@
+
+<!-- <div class="add-car">>
+
+  <label>brand</label>
+  <input type="text" class="new-todo" placeholder="Enter brand" autofocus
+        [(ngModel)]="newCar.brand" (keyup.enter)="addItem()" >
+  <label>model</label>
+  <input type="text" class="new-todo" placeholder="Enter brand" autofocus
+        [(ngModel)]="newCar.model" (keyup.enter)="addItem()" >
+  <button (click)="addItem()">Create New</button>
+</div> -->
+
+
+  <h1>Cars</h1>
+  <div class="cars-selection">
+    <label for="">Brand:</label>
+    <select class="custom-select" (change)="selectCar($event.target.value)">
+      <option value="">Choose</option>
+      <option *ngFor="let car of cars" value="{{car.id}}">
+         {{car.name}}
+      </option>
+    </select>
+  </div>
+  <car *ngIf="selectedCar" [car]="selectedCar"></car>
+<!--
+<div class="cars-list">
+  <article *ngFor="let car of cars" >
+    <h3>Brand: {{car.name}}</h3>
+    <ul>
+      <li *ngFor="let model of car.models">
+        {{model.name}}
+      </li>
+    </ul>
+  </article>
+</div> -->

@@ -1,0 +1,21 @@
+<h1>Todo tasks ({{todoCount}})</h1>
+
+<div>
+  <input type="text" class="new-todo" placeholder="What needs to be done?" autofocus
+        [(ngModel)]="newItem" (keyup.enter)="addItem()" >
+  <button (click)="addItem()">Create New</button>
+</div>
+
+<ul>
+    <li *ngFor="let task of tasks" [class.selected]="task == selectedTask">
+        <a href="javascript:void(0)" (dblclick)="select(task)">
+            {{task.name}}
+            <span [ngSwitch]="task.done">
+                <template [ngSwitchCase]="true">[Done]</template>
+                <template [ngSwitchCase]="false">[Todo]</template>
+            </span>
+        </a>
+    </li>
+</ul>
+
+<task *ngIf="selectedTask" [task]="selectedTask" (statusChanged)="calculateTodoCount()"></task>
